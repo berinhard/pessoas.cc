@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load poems_tags %}
+
+{% block title %}
+  <meta property="og:title" content="{{ post.title }} - pessoas" />
+  <title>{{ post.title }} - pessoas</title>
+{% endblock %}
+
+{% block content %}
+  {% if previous %}
+    <a class='prevPage one column' href='{{ previous.get_absolute_url }}'><div>&lt;</div></a>
+  {% endif %}
+
+  <div class='ten columns
+  {% if not previous %} offset-by-one{% endif %}
+  '>
+    <div class='post'>
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.content|enspify|linebreaks }}</p>
+      {% if post.resource_html %}
+        <h3>Concepção</h3>
+        <p>{{ post.resource_html|safe }}</p>
+      {% endif %}
+      <p class='postFooter'>escrito {% if not author %}por {{ post.author.username }}{% endif %} em {{ post.created_at }}.</p>
+    </div>
+  </div>
+  {% if next %}
+    <a class='nextPage one column' href='{{ next.get_absolute_url }}'><div>&gt;</div></a>
+  {% endif %}
+
+  <div id='nextPrevMobileSection' class='twelve columns'>
+    {% if previous %}
+      <a class='prevPageMobile' href='{{ previous.get_absolute_url }}'><div>&lt;</div></a>
+    {% endif %}
+    {% if next %}
+      <a class='nextPageMobile' href='{{ next.get_absolute_url }}'><div>&gt;</div></a>
+    {% endif %}
+  </div>
+
+{% endblock %}

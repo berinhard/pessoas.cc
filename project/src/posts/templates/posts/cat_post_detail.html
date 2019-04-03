@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load poems_tags %}
+
+{% block title %}
+  <meta property="og:title" content="{{ cat_post.post.title }} - pessoas" />
+  <title>{{ cat_post.post.title }} - pessoas</title>
+{% endblock %}
+
+{% block content %}
+  {% if previous %}
+    <a class='prevPage one column' href='{{ previous.get_absolute_url }}'><div>&lt;</div></a>
+  {% else %}
+    <a class='prevPage one column' href='{{ category.get_absolute_url }}'><div>&lt;</div></a>
+  {% endif %}
+
+  <div class='ten columns'>
+    <div class='post'>
+      {% if cat_post.post.resource_url %}
+      <center>
+          <p>{{ cat_post.post|populate_embedded|safe }}</p>
+      </center>
+      {% endif %}
+      <h3>{{ cat_post.post.title }}</h3>
+      <p>{{ cat_post.post.content|enspify|linebreaks }}</p>
+      <p class='postFooter'>escrito por {{ cat_post.post.author.username }} em {{ cat_post.post.created_at }}.</p>
+    </div>
+  </div>
+  {% if next %}
+    <a class='nextPage one column' href='{{ next.get_absolute_url }}'><div>&gt;</div></a>
+  {% endif %}
+
+  <div id='nextPrevMobileSection' class='twelve columns'>
+    {% if previous %}
+      <a class='prevPageMobile' href='{{ previous.get_absolute_url }}'><div>&lt;</div></a>
+    {% else %}
+      <a class='prevPageMobile' href='{{ category.get_absolute_url }}'><div>&lt;</div></a>
+    {% endif %}
+    {% if next %}
+      <a class='nextPageMobile' href='{{ next.get_absolute_url }}'><div>&gt;</div></a>
+    {% endif %}
+  </div>
+
+{% endblock %}
