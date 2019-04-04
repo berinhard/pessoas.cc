@@ -21,7 +21,7 @@
         <h3>Concepção</h3>
         <p>{{ post.resource_html|safe }}</p>
       {% endif %}
-      <p class='postFooter'>escrito {% if not author %}por {{ post.author.username }}{% endif %} em {{ post.created_at }}.</p>
+      <p class='postFooter'>escrito por {{ post.author_username }} em {{ post.created_at }}.</p>
     </div>
   </div>
   {% if next %}

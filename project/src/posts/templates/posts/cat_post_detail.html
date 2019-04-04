@@ -22,7 +22,7 @@
       {% endif %}
       <h3>{{ cat_post.post.title }}</h3>
       <p>{{ cat_post.post.content|enspify|linebreaks }}</p>
-      <p class='postFooter'>escrito por {{ cat_post.post.author.username }} em {{ cat_post.post.created_at }}.</p>
+      <p class='postFooter'>escrito por {{ cat_post.post.author_username }} em {{ cat_post.post.created_at }}.</p>
     </div>
   </div>
   {% if next %}
