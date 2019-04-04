@@ -52,7 +52,7 @@ class NewPoemsCategorypost(models.Model):
 
 
 class NewPoemsPost(models.Model):
-    author_userrname = models.CharField(max_length=200, default='')
+    author_username = models.CharField(max_length=200, default='')
     author_fullname = models.CharField(max_length=200, default='')
     title = models.CharField(max_length=255)
     content = models.TextField()

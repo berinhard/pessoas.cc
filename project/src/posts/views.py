@@ -30,7 +30,7 @@ class ListByAuthorView(ListView):
     def get_queryset(self, *args, **kwargs):
         author_username = self.kwargs['author_username']
         #self.author = get_object_or_404(User, username=author_username)
-        return Post.objects.filter(author_userrname=author_username)
+        return Post.objects.filter(author_username=author_username)
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
