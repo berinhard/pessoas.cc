@@ -2,6 +2,8 @@ from unipath import Path
 
 PROJECT_DIR = Path(__file__).ancestor(2)
 
+from decouple import config
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -114,3 +116,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT= PROJECT_DIR.child('staticfiles')
+STATICFILES_DIRS = [PROJECT_DIR.child("static")]
+STATICFILES_STORAGE = config('STATICFILES_STORAGE', default='whitenoise.django.GzipManifestStaticFilesStorage')
