@@ -1,6 +1,7 @@
 from unipath import Path
 
 PROJECT_DIR = Path(__file__).ancestor(2)
+BASE_DIR = PROJECT_DIR
 
 from decouple import config
 
