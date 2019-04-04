@@ -1,2 +1,2 @@
-web: PYTHONPATH=$PYTHONPATH:$PWD/project gunicorn src.config.wsgi
+web: gunicorn project.src.wsgi
 release: python project/manage.py migrate --no-input
