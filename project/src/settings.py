@@ -11,7 +11,7 @@ DEBUG = config('DEBUG', cast=bool)
 SECRET_KEY = config('SECRET_KEY')
 PRODUCTION = config('PRODUCTION', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pessoas.cc']
 
 
 # Application definition
@@ -115,3 +115,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT= PROJECT_DIR.child('staticfiles')
 STATICFILES_DIRS = [PROJECT_DIR.child("static")]
 STATICFILES_STORAGE = config('STATICFILES_STORAGE', default='whitenoise.django.GzipManifestStaticFilesStorage')
+
+import django_heroku
+django_heroku.settings(locals())
