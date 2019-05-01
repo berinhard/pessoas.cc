@@ -7,7 +7,7 @@ from django.template.defaultfilters import slugify
 class NewPoemsCategory(models.Model):
     name = models.CharField(max_length=100)
     slug = models.CharField(unique=True, max_length=110)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
     description = models.TextField()
 
     def save(self, *args, **kwargs):
@@ -29,7 +29,7 @@ class NewPoemsCategorypost(models.Model):
     post = models.ForeignKey('NewPoemsPost', models.DO_NOTHING)
     category = models.ForeignKey(NewPoemsCategory, models.DO_NOTHING)
     position = models.IntegerField()
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def get_next_post(self):
         qs = NewPoemsCategorypost.objects.select_related('category', 'post')
@@ -57,7 +57,7 @@ class NewPoemsPost(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, blank=False, null=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     content = models.TextField()
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
     slug = models.CharField(unique=True, max_length=300)
     resource_html = models.TextField(blank=True, null=True)
 
