@@ -61,10 +61,11 @@ class NewPoemsPost(models.Model):
     slug = models.CharField(unique=True, max_length=300)
     resource_html = models.TextField(blank=True, null=True)
 
-
     def save(self, *args, **kwargs):
         if not self.pk:
             self.slug = slugify(self.title)
+        self.author_username = self.author.username
+        self.author_username = self.author.get_full_name()
         return super().save(*args, **kwargs)
 
     def get_next_post(self):
