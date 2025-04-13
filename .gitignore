@@ -12,3 +12,4 @@
 project/media/*
 staticfiles/
 .idea/
+.envrc
