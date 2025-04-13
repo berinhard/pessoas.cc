@@ -5,23 +5,24 @@ from django.views.generic import ListView, DetailView
 from posts.models import NewPoemsPost as Post
 from posts.models import NewPoemsCategory as Category
 from posts.models import NewPoemsCategorypost as CategoryPost
+from django.shortcuts import render
 
 
 class HomeIndexView(ListView):
-    template_name = 'posts/templates/posts/index.html'
+    template_name = 'posts/index.html'
     context_object_name = 'posts'
     queryset = Post.objects.all()[:5]
 
 
 class ListAllView(ListView):
-    template_name = 'posts/templates/posts/list_posts.html'
+    template_name = 'posts/list_posts.html'
     context_object_name = 'posts'
     paginate_by = 5
     queryset = Post.objects.all()
 
 
 class ListByAuthorView(ListView):
-    template_name = 'posts/templates/posts/list_posts.html'
+    template_name = 'posts/list_posts.html'
     context_object_name = 'posts'
     paginate_by = 5
 
@@ -40,7 +41,7 @@ class PostDetailView(DetailView):
     queryset = Post.objects.all()
     slug_field = 'slug'
     slug_url_kwarg = 'post_slug'
-    template_name = 'posts/templates/posts/post_detail.html'
+    template_name = 'posts/post_detail.html'
     context_object_name = 'post'
 
     def get_context_data(self, *args, **kwargs):
@@ -48,12 +49,6 @@ class PostDetailView(DetailView):
         context['next'] = self.object.get_next_post()
         context['previous'] = self.object.get_previous_post()
         return context
-
-
-home_index = HomeIndexView.as_view()
-list_all = ListAllView.as_view()
-list_by_author = ListByAuthorView.as_view()
-post_detail = PostDetailView.as_view()
 
 
 def category_start(request, category_slug):
@@ -65,7 +60,7 @@ def category_start(request, category_slug):
 
     cat_posts = CategoryPost.objects.select_related('post').filter(category=category)
 
-    return render(request, 'posts/templates/posts/category_post.html', {'first_cat_post': first_post, 'cat_posts': cat_posts, 'category': category, })
+    return render(request, 'posts/category_post.html', {'first_cat_post': first_post, 'cat_posts': cat_posts, 'category': category, })
 
 
 def post_category_detail(request, category_slug, post_slug):
@@ -78,7 +73,7 @@ def post_category_detail(request, category_slug, post_slug):
         'next': cat_post.get_next_post(),
         'previous': cat_post.get_previous_post(),
     }
-    return render(request, 'posts/templates/posts/cat_post_detail.html', context)
+    return render(request, 'posts/cat_post_detail.html', context)
 
 
 def random_post_view(request):
