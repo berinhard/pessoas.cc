@@ -7,12 +7,6 @@ from posts.models import NewPoemsCategory as Category
 from posts.models import NewPoemsCategorypost as CategoryPost
 
 
-class HomeIndexView(ListView):
-    template_name = 'posts/templates/posts/index.html'
-    context_object_name = 'posts'
-    queryset = Post.objects.all()[:5]
-
-
 class ListAllView(ListView):
     template_name = 'posts/templates/posts/list_posts.html'
     context_object_name = 'posts'
@@ -50,7 +44,6 @@ class PostDetailView(DetailView):
         return context
 
 
-home_index = HomeIndexView.as_view()
 list_all = ListAllView.as_view()
 list_by_author = ListByAuthorView.as_view()
 post_detail = PostDetailView.as_view()
