@@ -1,3 +1,2 @@
 #!/bin/bash
-
-python project/manage.py migrate --no-input
+python manage.py migrate --no-input

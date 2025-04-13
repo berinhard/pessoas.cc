@@ -1,2 +1,2 @@
-web: gunicorn project.src.wsgi --pythonpath project
-release: python project/manage.py migrate --no-input
+web: gunicorn pessoas.src.wsgi --pythonpath pessoas
+release: python manage.py migrate --no-input
