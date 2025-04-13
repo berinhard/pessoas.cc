@@ -1,7 +1,7 @@
 #coding:utf-8
 from django.conf.urls import re_path
 
-from src.posts.views import *
+from posts.views import *
 
 app_name = 'poems'
 
