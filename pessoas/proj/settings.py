@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'src.posts',
+    'posts',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +51,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'src.posts.context_processors.get_categories',
+                'posts.context_processors.get_categories',
             ],
         },
     },
