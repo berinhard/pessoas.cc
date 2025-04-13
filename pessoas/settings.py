@@ -1,3 +1,4 @@
+import dj_database_url
 from pathlib import Path
 from decouple import config
 
@@ -5,8 +6,8 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = config.get("SECRET_KEY")
-DEBUG = config.get("DEBUG", cast=bool)
+SECRET_KEY = config("SECRET_KEY")
+DEBUG = config("DEBUG", cast=bool)
 
 # TODO configurar no pré-deploy
 ALLOWED_HOSTS = []
