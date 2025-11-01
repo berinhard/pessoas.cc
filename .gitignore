@@ -13,3 +13,4 @@ project/media/*
 staticfiles/
 .idea/
 .envrc
+prod-fixtures
