@@ -1,2 +1,2 @@
-web: gunicorn pessoas.src.wsgi --pythonpath pessoas
+web: gunicorn pessoas.wsgi --pythonpath pessoas
 release: python manage.py migrate --no-input
