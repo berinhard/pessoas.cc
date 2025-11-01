@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from src.posts.models import NewPoemsCategorypost as CategoryPost
-from src.posts.models import NewPoemsCategory as Category
-from src.posts.models import NewPoemsPost as Post
+from posts.models import NewPoemsCategorypost as CategoryPost
+from posts.models import NewPoemsCategory as Category
+from posts.models import NewPoemsPost as Post
 
 
 class CategoryPostInline(admin.TabularInline):

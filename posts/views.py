@@ -1,12 +1,11 @@
 from django.http import Http404
-from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render, redirect, render_to_response
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import ListView, DetailView
-from django.template import RequestContext
 
-from src.posts.models import NewPoemsPost as Post
-from src.posts.models import NewPoemsCategory as Category
-from src.posts.models import NewPoemsCategorypost as CategoryPost
+from posts.models import NewPoemsPost as Post
+from posts.models import NewPoemsCategory as Category
+from posts.models import NewPoemsCategorypost as CategoryPost
+from django.shortcuts import render
 
 
 class HomeIndexView(ListView):
@@ -50,12 +49,6 @@ class PostDetailView(DetailView):
         context['next'] = self.object.get_next_post()
         context['previous'] = self.object.get_previous_post()
         return context
-
-
-home_index = HomeIndexView.as_view()
-list_all = ListAllView.as_view()
-list_by_author = ListByAuthorView.as_view()
-post_detail = PostDetailView.as_view()
 
 
 def category_start(request, category_slug):

@@ -11,3 +11,6 @@
 .sass-cache/
 project/media/*
 staticfiles/
+.idea/
+.envrc
+prod-fixtures
