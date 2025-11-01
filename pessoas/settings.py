@@ -11,6 +11,15 @@ DEBUG = config("DEBUG", cast=bool)
 
 # TODO configurar no pré-deploy
 ALLOWED_HOSTS = []
+if not DEBUG:
+    ALLOWED_HOSTS = [
+        "prod.pessoas.cc",
+        "pessoas.cc"
+    ]
+    CSRF_TRUSTED_ORIGINS = [
+        "https://*.pessoas.cc",
+        "https://pessoas.cc",
+    ]
 
 
 INSTALLED_APPS = [
